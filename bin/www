@@ -16,7 +16,8 @@ var models = require("../models");
 
 // we set the port of the app
 app.set('port', process.env.PORT || 3000);
-
+var port = process.env.PORT || 3000;
+// app.listen(port);
 
 // we sync the models with our db 
 // (thus creating the apropos tables)
