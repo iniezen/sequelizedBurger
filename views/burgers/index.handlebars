@@ -1,69 +1,78 @@
-<h1>Burgers!</h1>
+<div class="maindiv">
+    <img src="http://wallpapersdsc.net/wp-content/uploads/2016/09/Burger-Widescreen.jpg" alt="Burger Image" style="width:228px;height:228px;">
 
-{{#if username}}
-  Welcome {{username}}! Make some burgers.
-{{/if}}
+  <h1>Burgers!</h1>
 
-{{#unless logged_in}}
-  <p> Sign up to add your burgers!! </p>
-{{/unless}}
+  {{#if username}}
+    Welcome {{username}}! Make some burgers.
+  {{/if}}
 
-{{#if logged_in}}
-  <h2>Add a Burger</h2>
+  {{#unless logged_in}}
+    <p> Sign up to add your burgers!! </p>
+  {{/unless}}
 
-  <form class="create-update-form" action="burgers/create" method="POST">
+  {{#if logged_in}}
+    <h2>Add a Burger</h2>
 
-    <div class="form-group">
-      <label for="ca">Burger Name:</label>
-      <input type="text" id="ca" name="name">
-    </div>
+    <form class="create-update-form" action="burgers/create" method="POST">
 
-    <div class="form-group">
-      <label for="slee">Devoured</label><br>
-      <input type="radio" name="devoured" value="1" checked> Devoured!<br>
-      <input type="radio" name="devoured" value="0"> Undevoured
-    </div>
+      <div class="form-group">
+        <label for="ca">Burger Name:</label>
+        <input type="text" id="ca" name="name">
+      </div>
 
-    <button type="submit">Add Burger</button>
-  </form>
-{{/if}}
+      <div class="form-group">
+        <label for="slee">Devoured</label><br>
+        <input type="radio" name="devoured" value="1" checked> Devoured!<br>
+        <input type="radio" name="devoured" value="0"> Undevoured
+      </div>
 
+      <button type="submit">Add Burger</button>
+    </form>
+  {{/if}}
+</div>
 
+<div class="leftdiv">
 
-<h2>Burgers that are not devoured!</h2>
+  <h2>Burgers that are not devoured!</h2>
 
-<ul>
-  {{#each burgers}}
-    {{#unless this.devoured}}
-      <li>
-        {{this.name}} - owned by {{this.User.email}}
+  <ul>
+    {{#each burgers}}
+      {{#unless this.devoured}}
+        <li>
+          {{this.name}} - owned by {{this.User.email}}
 
-        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="true">
-          <button type="submit">Undevour It!</button>
-        </form>
+          <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="true">
+            <button type="submit">Devour It!</button>
+          </form>
 
-        {{> burgers/delete-burger}}
-      </li>
-    {{/unless}}
-  {{/each}}
-</ul>
+          {{> burgers/delete-burger}}
+        </li>
+      {{/unless}}
+    {{/each}}
+  </ul>
 
-<h2>Burgers that are devoured!</h2>
+</div>
 
-<ul>
-  {{#each burgers}}
-    {{#if this.devoured}}
-      <li>
-        {{this.name}} - owned by {{this.User.email}}
+<div class="rightdiv">
 
-        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="false">
-          <button type="submit">Devour It!</button>
-        </form>
+  <h2>Burgers that are devoured!</h2>
 
-        {{> burgers/delete-burger}}
-      </li>
-    {{/if}}
-  {{/each}}
-</ul>
+  <ul>
+    {{#each burgers}}
+      {{#if this.devoured}}
+        <li>
+          {{this.name}} - owned by {{this.User.email}}
+
+          <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="false">
+            <button type="submit">Undevour It!</button>
+          </form>
+
+          {{> burgers/delete-burger}}
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
+</div>

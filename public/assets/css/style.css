@@ -6,3 +6,64 @@ body {
 a {
   color: #00B7FF;
 }
+
+h1{
+
+	color: red;
+}
+
+li {
+  background: white;
+  margin: 5px;
+  padding: 5px;
+  list-style: none;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.create-update-form {
+  background: #D4B96A;
+  margin: 5px;
+  padding: 5px;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+body{
+	background: #D4B96A;
+
+}
+.maindiv{
+
+	width:400px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+
+
+.leftdiv{
+
+	display:inline;
+	float:left;
+	margin-left: 0px;
+}
+
+.rightdiv{
+
+	display:inline;
+	float:right;
+	margin-right: 0px;
+}
+
+button{
+	color: white;
+	background-color: blue;
+	width:100px;
+
+}
